@@ -17,10 +17,11 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Then, replace `terraform.tfvars` values with your `appId` and `password`.
+Then, replace `terraform.tfvars` values with your `appId` and `password`. 
+Terraform will use these values to provision resources on Azure.
 
 After you've done this, initalize your Terraform workspace, which will download 
-the provider.
+the provider and initialize it with the values provided in the `terraform.tfvars` file.
 
 ```shell
 $ terraform init
@@ -55,27 +56,28 @@ resource_group_name = demo-rg
 
 ## Configure kubectl
 
-To configure kubetcl, by running the following command. The
-[resource group name](https://github.com/hashicorp/learn-terraform-provision-aks/blob/master/aks-cluster.tf#L16)
-and [AKS name](https://github.com/hashicorp/learn-terraform-provision-aks/blob/master/aks-cluster.tf#L25)
- correspond to the resources spun up by Terraform.
+To configure kubetcl, by running the following command. 
 
 ```shell
 $ az aks get-credentials --resource-group demo-rg --name demo-aks;
 ```
 
+The
+[resource group name](https://github.com/hashicorp/learn-terraform-provision-aks-cluster/blob/master/aks-cluster.tf#L16)
+and [AKS name](https://github.com/hashicorp/learn-terraform-provision-aks-cluster/blob/master/aks-cluster.tf#L25)
+ correspond to the resources spun up by Terraform.
+
 ## Configure Kubernetes Dashboard
 
 To use the Kubernetes dashboard, we need to create a `ClusterRoleBinding`. This
-gives the `cluster-admin` permission to access the `kubernetes-dashboard`,
+gives the `cluster-admin` permission to access the `kubernetes-dashboard`.
 
 ```shell
 $ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 ```
 
-Finally, to access the Kubernetes dashboard, run `az aks browse`. You should be
-able to access the Kubernetes dashboard at [http://127.0.0.1:8001/](http://127.0.0.1:8001/)
+Finally, to access the Kubernetes dashboard, run the following command:
 
 ```shell
 $ az aks browse --resource-group demo-rg --name demo-aks
@@ -83,3 +85,6 @@ Merged "demo-aks" as current context in /var/folders/s6/m22_k3p11z104k2vx1jkqr2c
 Proxy running on http://127.0.0.1:8001/
 Press CTRL+C to close the tunnel...
 ```
+
+ You should be
+able to access the Kubernetes dashboard at [http://127.0.0.1:8001/](http://127.0.0.1:8001/).
