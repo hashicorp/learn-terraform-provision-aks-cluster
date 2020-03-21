@@ -56,7 +56,7 @@ resource_group_name = demo-rg
 
 ## Configure kubectl
 
-To configure kubetcl, by running the following command. 
+To configure kubetcl run the following command:
 
 ```shell
 $ az aks get-credentials --resource-group demo-rg --name demo-aks;
@@ -86,5 +86,4 @@ Proxy running on http://127.0.0.1:8001/
 Press CTRL+C to close the tunnel...
 ```
 
- You should be
-able to access the Kubernetes dashboard at [http://127.0.0.1:8001/](http://127.0.0.1:8001/).
+ You should be able to access the Kubernetes dashboard at [http://127.0.0.1:8001/](http://127.0.0.1:8001/).
