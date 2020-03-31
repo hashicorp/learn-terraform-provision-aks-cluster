@@ -40,11 +40,15 @@ take approximately 10 minutes.
 ```shell
 $ terraform apply
 
+# Output truncated...
+
 Plan: 2 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
+
+# Output truncated...
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
