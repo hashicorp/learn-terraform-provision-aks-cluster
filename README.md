@@ -42,7 +42,7 @@ $ terraform apply
 
 # Output truncated...
 
-Plan: 2 to add, 0 to change, 0 to destroy.
+Plan: 3 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
@@ -50,12 +50,12 @@ Do you want to perform these actions?
 
 # Output truncated...
 
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-kubernetes_cluster_name = demo-aks
-resource_group_name = demo-rg
+kubernetes_cluster_name = light-eagle-aks
+resource_group_name = light-eagle-rg
 ```
 
 ## Configure kubectl
@@ -63,13 +63,19 @@ resource_group_name = demo-rg
 To configure kubetcl run the following command:
 
 ```shell
-$ az aks get-credentials --resource-group demo-rg --name demo-aks;
+$ az aks get-credentials --resource-group light-eagle-rg --name light-eagle-aks;
 ```
 
 The
 [resource group name](https://github.com/hashicorp/learn-terraform-provision-aks-cluster/blob/master/aks-cluster.tf#L16)
 and [AKS name](https://github.com/hashicorp/learn-terraform-provision-aks-cluster/blob/master/aks-cluster.tf#L25)
- correspond to the resources spun up by Terraform.
+ correspond to the output variables showed after the successful Terraform run.
+
+You can view these outputs again by running:
+
+```shell
+$ terraform output
+```
 
 ## Configure Kubernetes Dashboard
 
@@ -84,8 +90,8 @@ clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 Finally, to access the Kubernetes dashboard, run the following command:
 
 ```shell
-$ az aks browse --resource-group demo-rg --name demo-aks
-Merged "demo-aks" as current context in /var/folders/s6/m22_k3p11z104k2vx1jkqr2c0000gp/T/tmpcrh3pjs_
+$ az aks browse --resource-group light-eagle-rg --name light-eagle-aks
+Merged "light-eagle-aks" as current context in /var/folders/s6/m22_k3p11z104k2vx1jkqr2c0000gp/T/tmpcrh3pjs_
 Proxy running on http://127.0.0.1:8001/
 Press CTRL+C to close the tunnel...
 ```

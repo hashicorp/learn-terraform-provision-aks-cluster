@@ -1,6 +1,4 @@
-variable "prefix" {
-  default = "demo"
-}
+resource "random_pet" "prefix" {}
 
 variable "appId" {
 }
@@ -13,7 +11,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "default" {
-  name     = "${var.prefix}-rg"
+  name     = "${random_pet.prefix.id}-rg"
   location = "West US 2"
 
   tags = {
@@ -22,10 +20,10 @@ resource "azurerm_resource_group" "default" {
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
-  name                = "${var.prefix}-aks"
+  name                = "${random_pet.prefix.id}-aks"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
-  dns_prefix          = "${var.prefix}-k8s"
+  dns_prefix          = "${random_pet.prefix.id}-k8s"
 
   agent_pool_profile {
     name            = "default"
