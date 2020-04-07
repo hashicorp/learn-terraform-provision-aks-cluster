@@ -55,7 +55,7 @@ output "kubernetes_cluster_name" {
   value = azurerm_kubernetes_cluster.default.name
 }
 
-# Kubernetes provider
+# # Kubernetes provider
 # provider "kubernetes" {
 #   load_config_file = "false"
 
