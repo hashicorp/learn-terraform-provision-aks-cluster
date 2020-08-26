@@ -1,6 +1,2 @@
 appId    = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 password = "********-****-****-****-************"
-tenant_id = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
-subscription_id = "cccccccc-cccc-cccc-cccc-cccccccccccc"
-client_id = "dddddddd-dddd-dddd-dddd-dddddddddddd"
-client_secret = "********-****-****-****-************"

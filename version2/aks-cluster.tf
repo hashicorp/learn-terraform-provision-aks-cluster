@@ -1,10 +1,6 @@
 resource "random_pet" "prefix" {}
 
 provider "azurerm" {
-  subscription_id = var.subscription_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  tenant_id       = var.tenant_id
   version = "~> 2.0"
   features {}
 }
@@ -31,13 +27,6 @@ resource "azurerm_kubernetes_cluster" "default" {
     os_disk_size_gb = 30
   }
 
-  linux_profile {
-      admin_username = "k8s"
-
-      ssh_key {
-          key_data = file(var.ssh_public_key)
-      }
-  }
   service_principal {
     client_id     = var.appId
     client_secret = var.password
@@ -45,17 +34,6 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   role_based_access_control {
     enabled = true
-  }
-
-  addon_profile {
-      oms_agent {
-      enabled     = false
-      }
-  }
-
-  network_profile {
-    load_balancer_sku = "Standard"
-    network_plugin = "kubenet"
   }
 
   tags = {
