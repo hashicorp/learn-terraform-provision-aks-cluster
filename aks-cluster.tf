@@ -1,13 +1,8 @@
 resource "random_pet" "prefix" {}
 
-variable "appId" {
-}
-
-variable "password" {
-}
-
 provider "azurerm" {
-  version = "~> 1.27.0"
+  version = "~> 2.0"
+  features {}
 }
 
 resource "azurerm_resource_group" "default" {
@@ -25,11 +20,10 @@ resource "azurerm_kubernetes_cluster" "default" {
   resource_group_name = azurerm_resource_group.default.name
   dns_prefix          = "${random_pet.prefix.id}-k8s"
 
-  agent_pool_profile {
+  default_node_pool {
     name            = "default"
-    count           = 2
+    node_count      = 2
     vm_size         = "Standard_D2_v2"
-    os_type         = "Linux"
     os_disk_size_gb = 30
   }
 
@@ -45,12 +39,4 @@ resource "azurerm_kubernetes_cluster" "default" {
   tags = {
     environment = "Demo"
   }
-}
-
-output "resource_group_name" {
-  value = azurerm_resource_group.default.name
-}
-
-output "kubernetes_cluster_name" {
-  value = azurerm_kubernetes_cluster.default.name
 }
