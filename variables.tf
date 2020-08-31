@@ -1,5 +1,3 @@
-#Variables declaration
-
 variable "appId" {
   description = "Azure Kubernetes Service Cluster service principal"
 }

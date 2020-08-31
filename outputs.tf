@@ -7,11 +7,11 @@ output "kubernetes_cluster_name" {
 }
 
 output "host" {
-    value = azurerm_kubernetes_cluster.default.kube_config.0.host
+  value = azurerm_kubernetes_cluster.default.kube_config.0.host
 }
 
 output "client_key" {
-    value = azurerm_kubernetes_cluster.default.kube_config.0.client_key
+  value = azurerm_kubernetes_cluster.default.kube_config.0.client_key
 }
 
 output "client_certificate" {
@@ -23,9 +23,9 @@ output "kube_config" {
 }
 
 output "cluster_username" {
-    value = azurerm_kubernetes_cluster.default.kube_config.0.username
+  value = azurerm_kubernetes_cluster.default.kube_config.0.username
 }
 
 output "cluster_password" {
-    value = azurerm_kubernetes_cluster.default.kube_config.0.password
+  value = azurerm_kubernetes_cluster.default.kube_config.0.password
 }
