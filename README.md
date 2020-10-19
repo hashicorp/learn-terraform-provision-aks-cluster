@@ -84,7 +84,7 @@ To use the Kubernetes dashboard, we need to create a `ClusterRoleBinding`. This
 gives the `cluster-admin` permission to access the `kubernetes-dashboard`.
 
 ```shell
-$ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+$ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard  --user=clusterUser
 clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 ```
 
