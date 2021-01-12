@@ -1,7 +1,6 @@
 resource "random_pet" "prefix" {}
 
 provider "azurerm" {
-  version = "~> 2.0"
   features {}
 }
 
